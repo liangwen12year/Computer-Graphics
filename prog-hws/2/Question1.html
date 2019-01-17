@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fractal</title>
+    <link type="text/css" rel="stylesheet" href="primitive.css"/>
+</head>
+
+
+<body>
+<h3> Assignment 2 </h3>
+<marquee class='roller'>Name: Wen Liang(Wen_Liang@student.uml.edu)</marquee>
+<marquee class='roller'>The canvas size is 800*600. Recommend the iteration should not be greater than 6. Otherwise, your computer may be frozen for couple of time! </marquee>	
+<p   style="display:inline-block; margin: 30px auto;">
+<button class='button_question' onclick="location.href='Question1.html'" >Question1</button>	
+ <div class="dropdown">
+  <button class="dropbtn">Question2_1</button>
+  <div class="dropdown-content">
+    <a href="Question2_1.html">Question2_1_line</a>
+    <a href="Question2_1_circle.html">Question2_1_cirlce</a>
+    <a href="Question2_1_ellipse.html">Question2_1_ellipse</a>
+      <a href="Question2_1_rectangle.html">Question2_1_rectangle</a>
+    <a href="Question2_1_polygon.html">Question2_1_polygon</a>
+    <a href="Question2_1_polyline.html">Question2_1_polyline</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Question2_2</button>
+  <div class="dropdown-content">
+    <a href="Question2_2.html">Question2_2_polygon_wheel</a>
+    <a href="Question2_2_eg_circle.html">Question2_2_circle_wheel</a>
+    <a href="Question2_2_eg_ellipse.html">Question2_2_ellipse_wheel</a>
+  </div>
+</div>
+<button  class='button_question' onclick="location.href='Question2_3.html'">Question2_3</button>
+
+
+<span style="margin-left: 30px;">
+     Primitive:<select id='Primitive'>
+<option value='line' selected>line</option>
+<option value='polyline'>polyline</option>
+<option value='polygon'>polygon</option>
+<option value='circle'>circle</option>
+<option value='ellipse'>ellipse</option>
+<option value='rectangle'>rectangle</option>
+</select>
+</span>
+
+<span style="margin-left: 50px;">
+     Color:<select id='color'>
+<option value='red' selected>red</option>
+<option value='black'>black</option>
+<option value='blue'>blue</option>
+<option value='green'>green</option>
+<option value='orange'>orange</option>
+<option value='yellow'>yellow</option>
+</select>
+</span>
+
+<span style="margin-left: 50px;">
+     Linewidth:<select id='linewidth'>
+<option value='1' selected>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5'>5</option>
+<option value='6'>6</option>
+</select>
+</span>
+
+
+<div >
+    Iteration:  <input id="iterations" value='0' name="iterations" style="margin-left: 0px;">
+<button class="wheel_button" type='button' id="drawFractal" onclick='drawFractal(event);'>iteration submit</button >
+</div>
+ <br>
+
+<div  style="display: inline-block;">
+
+    ratio: <input id="ratio" value='1' name="ratio" style="margin-left:24px; ">
+    <button class='wheel_button' type='button' id="drawFractal" onclick='drawFractal(event);'>ratio submit</button >
+</div>
+  <br>
+   <p style='font-size: 15px; font-weight: 900;'> ratio should be greater or equal to 1 (positive integer)! Corresponding to the number of fractals in base case. </p> 
+<div>
+<button  class= 'wheel_button' id="clear" onclick='erase(event)'>clear</button>
+</div>
+
+
+<canvas class="canvas" id="canvas" width="800" height="600" style="border:1px solid #000000;" >
+    your browser does not support HTML5 canvas tag
+</canvas>
+<script type="text/javascript" src="Fractal.js"></script>
+
+</body>	
+</html>
+
+
+
+

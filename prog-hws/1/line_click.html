@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>line</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="primitive.css"/>
+
+
+    <script>
+
+        flag=0;
+        x1,y1,x2,y2;
+        function show_coords(event)
+        {
+            flag+=1;
+            if(flag==1) {
+
+                var X1 = event.clientX;
+                var Y1 = event.clientY;
+                x1 = parseInt(X1);
+                y1 = parseInt(Y1);
+                var c=document.getElementById("myCanvas");
+                var ctx=c.getContext("2d");
+                var imgData=ctx.createImageData(1,1);
+                for (var i=0;i<imgData.data.length;i+=4)
+                {
+                    imgData.data[i+0]=0;
+                    imgData.data[i+1]=0;
+                    imgData.data[i+2]=0;
+                    imgData.data[i+3]=255;
+                }
+                ctx.putImageData(imgData, x1, y1);
+            }
+            if(flag==2) {
+                flag=0;
+                var X2 = event.clientX;
+                var Y2 = event.clientY;
+                x2 = parseInt(X2);
+                y2 = parseInt(Y2);
+                //alert("X coords: " + x2 + ", Y coords: " + y2);
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                var imgData = ctx.createImageData(1, 1);
+                for (var i = 0; i < imgData.data.length; i += 4) {
+                    imgData.data[i + 0] = 0;
+                    imgData.data[i + 1] = 0;
+                    imgData.data[i + 2] = 0;
+                    imgData.data[i + 3] = 255;
+                }
+                ctx.putImageData(imgData, x2, y2);
+                k=(y2-y1)/(x2-x1);
+                xmin=(x1<x2?x1:x2);
+                xmax=(x1<x2?x2:x1);
+                ymin=(y1<y2?y1:y2);
+                ymax=(y1<y2?y2:y1);
+                if(0<k&&k<1) {
+                    dx = xmax - xmin;
+                    dy = ymax - ymin;
+                    d = 2 * dy - dx;
+                    incE = 2 * dy;
+                    incNE = 2 * (dy - dx);
+                    x = xmin;
+                    y = ymin;
+                    while (x < xmax) {
+                        if (d <= 0) {
+                            d = d + incE;
+                            x = x + 1;
+                        }
+                        else {
+                            d = d + incNE;
+                            x = x + 1;
+                            y = y + 1;
+                        }
+
+                        ctx.putImageData(imgData, x, y);
+
+                    }
+                }
+                if(k>1) {
+                    dx = xmax - xmin;
+                    dy = ymax - ymin;
+                    d = dy - 2 * dx;
+                    incN = (-2) * dx;
+                    incNE = 2 * (dy - dx);
+                    x = xmin;
+                    y = ymin;
+                    while (y < ymax) {
+                        if (d > 0) {
+                            d = d + incN;
+                            y = y + 1;
+                        }
+                        else {
+                            d = d + incNE;
+                            x = x + 1;
+                            y = y + 1;
+                        }
+
+                        ctx.putImageData(imgData, x, y);
+
+                    }
+                }
+                if(k<(-1)){
+                    //alert(1);
+                    dx = xmax - xmin;
+                    dy = ymin - ymax;
+                    d =  dy + 2*dx;
+                    incS = 2 * dx;
+                    incSE = 2 * (dy + dx);
+                    x = xmin;
+                    y = ymax;
+                    while (y > ymin) {
+                        // alert(1);
+                        if (d < 0) {
+                            d = d + incS;
+                            y = y - 1;
+                        }
+                        else {
+                            d = d + incSE;
+                            x = x + 1;
+                            y = y - 1;
+                        }
+
+                        ctx.putImageData(imgData, x, y);
+
+                    }
+
+                }
+
+                if((-1)<k&&k<0){
+                    //alert(1);
+                    dx = xmax - xmin;
+                    dy = ymin - ymax;
+                    d =  dy + 2*dx;
+                    incE = 2 * dy;
+                    incSE = 2 * (dy + dx);
+                    x = xmin;
+                    y = ymax;
+                    while (x < xmax) {
+                        // alert(1);
+                        if (d > 0) {
+                            d = d + incE;
+                            x=x+1;
+                        }
+                        else {
+                            d = d + incSE;
+                            x = x + 1;
+                            y = y - 1;
+                        }
+
+                        ctx.putImageData(imgData, x, y);
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
+
+        function erase(event) {
+            //alert(7);
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.clearRect(0,0,c.width,c.height);
+            flag=0;
+
+        }
+    </script>
+</head>
+
+<body>
+<canvas onmousedown="show_coords(event)" id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
+    your browser does not support HTML5 canvas tag
+</canvas>
+
+<p>
+    <button id="line" onclick="location.href='line_click.html'" value="line">line</button>
+    <button id="circle" onclick="location.href='circle_click.html'" value="circle">circle</button>
+    <button id="elipse" onclick="location.href='elipse.html'" value="elipse">elipse</button>
+    <button id="rectangle" onclick="location.href='rectangle_click.html'" value="rectangle">rectangle</button>
+    <button id="polygon" onclick="location.href='polygon_click.html'" value="polygon">polygon</button>
+    <button id="polyline" onclick="location.href='polyline_click.html'" value="polyline">polyline</button>
+</p>
+<button id="erase" onclick="erase(event)">erase</button>
+<h3>Assignment 1</h3>
+<p>Wen Liang(Wen_Liang@student.uml.edu)</p>
+
+
+
+
+</body>
+</html>

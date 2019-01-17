@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Question2.3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="primitive.css"/>
+    <script type = "text/javascript" src="main.js"></script>
+</head>
+<body >
+
+<h3> Assignment 2 </h3>
+<marquee class='roller'>Name: Wen Liang(Wen_Liang@student.uml.edu)</marquee>
+<marquee class='roller'>The canvas size is 800*600. the score should be in the range of 4 to 100!</marquee>
+<button class="button_question" onclick="location.href='Question1.html'" >Question1</button>	
+<div class="dropdown">
+  <button class="dropbtn">Question2_1</button>
+  <div class="dropdown-content">
+    <a href="Question2_1.html">Question2_1_line</a>
+    <a href="Question2_1_circle.html">Question2_1_cirlce</a>
+    <a href="Question2_1_ellipse.html">Question2_1_ellipse</a>
+      <a href="Question2_1_rectangle.html">Question2_1_rectangle</a>
+    <a href="Question2_1_polygon.html">Question2_1_polygon</a>
+    <a href="Question2_1_polyline.html">Question2_1_polyline</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Question2_2</button>
+  <div class="dropdown-content">
+    <a href="Question2_2.html">Question2_2_polygon_wheel</a>
+    <a href="Question2_2_eg_circle.html">Question2_2_circle_wheel</a>
+    <a href="Question2_2_eg_ellipse.html">Question2_2_ellipse_wheel</a>
+  </div>
+</div>
+<button class="button_question" onclick="location.href='Question2_3.html'">Question2_3</button>
+
+<p >canvas size is 800x600</p>
+
+<p style="display: inline-block; font-size:20px;">Color:</p><select id='color' style="width:80px;height:20px;">
+<option value='red' selected>red</option>
+<option value='blue'>blue</option>
+<option value='black'>black</option>
+<option value='orange'>orange</option>
+<option value='green'>green</option>
+<option value='yellow'>yellow</option>
+</select>
+
+<span style="margin-left: 50px;">
+     Linewidth:<select id='linewidth'>
+<option value='1' selected>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5' selected>5</option>
+<option value='6'>6</option>
+<option value='7'>7</option>
+<option value='8'>8</option>
+
+</select>
+</span>
+
+<p>
+<p >
+        <span>score:</span>  <input id="score" name="x1" >
+      <span >R:</span> <input value="150" id="R" name="x1" >
+</p>
+
+<button  class="wheel_button" type="button" id="wheel">Submit</button>
+<button  class="wheel_button" id="erase" onclick="erase(event)">clear</button>
+
+<canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;">
+    your browser does not support HTML5 canvas tag
+</canvas>
+
+
+
+<script>
+   
+
+</script>
+</body>
+</html>
+<!--
+<p>
+    <button id="line" onclick="location.href='line_click.html'" value="line">line</button>
+    <button id="circle" onclick="location.href='circle_click.html'" value="circle">circle</button>
+    <button id="elipse" onclick="location.href='elipse.html'" value="elipse">elipse</button>
+    <button id="rectangle" onclick="location.href='rectangle_click.html'" value="rectangle">rectangle</button>
+    <button id="polygon" onclick="location.href='polygon_click.html'" value="polygon">polygon</button>
+    <button id="polyline" onclick="location.href='polyline_click.html'" value="polyline">polyline</button>
+    button {
+
+     background-color: #cf2525;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/125% Arial, Helvetica, sans-serif; 
+    padding:  1em 5em ;
+    padding-left: 30px;
+    width: 120px; 
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    letter-spacing: 2px;
+    border-radius: 5px;
+    padding:8px;  
+    border-color: #357ebd;  
+    color: #fff;  
+    -moz-border-radius: 10px;  
+    -webkit-border-radius: 10px;  
+     border-radius: 10px; /* future proofing */  
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */  
+    vertical-align: middle;  
+    border: 1px solid transparent;  
+}
+</p>-->
+

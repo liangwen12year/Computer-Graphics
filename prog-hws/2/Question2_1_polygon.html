@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Question2.1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="primitive.css"/>
+    <script type = "text/javascript" src="main.js"></script>
+</head>
+
+<body>
+  <button class="button_question" onclick="location.href='Question1.html'" >Question1</button>  
+<div class="dropdown">
+  <button class="dropbtn">Question2_1</button>
+  <div class="dropdown-content">
+    <a href="Question2_1.html">Question2_1_line</a>
+    <a href="Question2_1_circle.html">Question2_1_cirlce</a>
+    <a href="Question2_1_ellipse.html">Question2_1_ellipse</a>
+      <a href="Question2_1_rectangle.html">Question2_1_rectangle</a>
+    <a href="Question2_1_polygon.html">Question2_1_polygon</a>
+    <a href="Question2_1_polyline.html">Question2_1_polyline</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Question2_2</button>
+  <div class="dropdown-content">
+    <a href="Question2_2.html">Question2_2_polygon_wheel</a>
+    <a href="Question2_2_eg_circle.html">Question2_2_circle_wheel</a>
+    <a href="Question2_2_eg_ellipse.html">Question2_2_ellipse_wheel</a>
+  </div>
+</div>
+<button class="button_question" onclick="location.href='Question2_3.html'">Question2_3</button>
+<canvas id="canvas" width="800" height="600" style="border:1px solid #000000;background-color:#E0FFFF; ">
+    your browser does not support HTML5 canvas tag
+</canvas>
+
+<script >
+	var canvas = document.getElementById('canvas'),
+    c = canvas.getContext('2d');
+    
+    c.beginPath();
+    c.fillStyle='white';
+    c.fillRect(10,10,400,400);
+    
+
+    c.stroke();
+   c.font="20px Arial";
+   c.beginPath();
+   c.fillStyle="#428bca";
+   c.fillRect(10,450,85,20);
+ 
+     c.fillRect(100,450,85,20);
+     c.fillRect(190,450,85,20);
+     c.fillRect(280,450,85,20);
+     c.fillRect(370,450,85,20);
+     c.fillRect(460,450,85,20);
+     c.fillRect(10,480,85,20);
+     c.fillRect(10,420,85,25);
+     c.stroke();
+     c.beginPath();  
+c.fillStyle="black";
+
+c.fillText("show",15,432);
+c.fillText("polygone",15,445);
+ c.fillText("circle",120,465);      
+c.fillText("ellipse",200,465);
+    c.fillText("rectangle",280,465);
+  c.fillText("polygone",375,465);
+  c.fillText("polyline",473,465);
+c.fillText("line",35,470);
+c.fillText(" erase",20,498);
+ c.stroke();
+ c.beginPath();
+ c.moveTo(150,100);
+ c.lineTo(300,100);
+ c.lineTo(300,200);
+ c.lineTo(100,200);
+ c.lineTo(30,100);
+ c.lineTo(90,50);
+ c.closePath();
+ c.stroke();
+ c.beginPath();
+c.fillText('Assignment 1',20,520);
+c.fillText('Wen Liang(Wen_Liang@student.uml.edu)',20,550);
+ c.stroke();
+	
+
+</script>>
+</body>
+</html>

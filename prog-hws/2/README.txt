@@ -1,0 +1,1 @@
+I feel that my circle and ellipse fractals of question 1 might not be right. 

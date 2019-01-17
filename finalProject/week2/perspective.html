@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+    <button class="dropbtn" onclick="location.href='parallel.html'">parallel </button>
+      <button class="dropbtn" onclick="location.href='perspective.html'">perspective </button>
+ <p class="p" style="width:500px; margin: 0px auto;">Project_week2&nbsp &nbsp&nbsp  Wen Liang(Wen_Liang@student.uml.edu)</p>
+     
+<!--  <div class="dropdown">
+  <button class="dropbtn"></button>
+  <div class="dropdown-content">
+    <a href="i.html">parallel</a>
+    <a href="Question2_1_circle.html"></a>
+    <a href="Question2_1_ellipse.html">orthographic</a>
+      <a href="Question2_1_rectangle.html">isometric</a>
+    <a href="Question2_1_polygon.html">Question2_1_polygon</a>
+    <a href="Question2_1_polyline.html">Question2_1_polyline</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Perspective</button>
+  <div class="dropdown-content">
+    <a href="Question2_2.html">1 point</a>
+    <a href="Question2_2_eg_circle.html">2 point</a>
+    <a href="Question2_2_eg_ellipse.html">3 point</a>
+  </div>
+</div> -->
+<canvas id="canvas"></canvas>
+<div id="uiContainer">
+  <div id="ui">
+
+ <div >
+    Perspective View:<select id='view' onchange="main(this.value)">
+<option value='1' selected   >1 point</option>
+<option value='2'  >2 point</option>
+<option value='3'>3 point</option>
+
+</select>
+</div>
+    <br>
+    <br>
+    <br>
+    <br><br>
+
+
+    <div id="x"></div>
+    <div id="y"></div>
+    <div id="z"></div>
+    <div id="angleX"></div>
+    <div id="angleY"></div>
+    <div id="angleZ"></div>
+    <div id="scaleX"></div>
+    <div id="scaleY"></div>
+    <div id="scaleZ"></div>
+    <div id="shearX"></div>
+    <div id="shearY"></div>
+    <div id="fieldOfView"></div>
+     <div id="cameraAngle"></div>
+  </div>
+</div>
+</head>
+<body>
+<!-- vertex shader -->
+<script id="3d-vertex-shader" type="x-shader/x-vertex">
+attribute vec4 a_position;
+
+attribute vec2 a_texcoord;
+varying vec2 v_texcoord;
+
+uniform float u_fudgeFactor;
+uniform mat4 u_matrix;
+
+void main() {
+  // Multiply the position by the matrix.
+  gl_Position = u_matrix * a_position;
+  //vec4 position = u_matrix * a_position;
+  // Pass the color to the fragment shader.
+     //float zToDivideBy = 1.0 + position.z * u_fudgeFactor;
+
+  // Divide x and y by z.
+ // gl_Position = vec4(position.xy / zToDivideBy, position.zw);
+
+    v_texcoord = a_texcoord;
+}
+</script>
+<!-- fragment shader -->
+<script id="3d-fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+// Passed in from the vertex shader.
+varying vec2 v_texcoord;
+
+// The texture.
+uniform sampler2D u_texture;
+
+
+
+void main() {
+   gl_FragColor =  texture2D(u_texture, v_texcoord);
+}
+
+</script>
+ <link rel="stylesheet" href="./css/e.css">
+<script src="https://webglfundamentals.org/webgl/resources/webgl-utils.js"></script>
+<script src="https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js"></script>
+<script src="https://webglfundamentals.org/webgl/resources/webgl-lessons-helper.js"></script>
+<script type="text/javascript" src="./js/perspective.js"></script>
+
+</body>
+</html>

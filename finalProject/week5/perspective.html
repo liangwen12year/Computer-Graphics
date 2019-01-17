@@ -1,0 +1,240 @@
+<!doctype html>
+<html class="no-js" lang="" >
+
+<head>
+
+    <button class="dropbtn" onclick="location.href='parallel.html'">parallel </button>
+      <button class="dropbtn" onclick="location.href='perspective.html'">perspective </button>
+        <button class="dropbtn" onclick="location.href='animation.html'">Animation </button>
+          <button class="dropbtn" style="width: 220px" onclick="location.href='additional_camera.html'">additional_camera </button>
+ <p class="p" style="width:500px; margin: 0px auto;">Project_week5&nbsp &nbsp&nbsp  Wen Liang(Wen_Liang@student.uml.edu)</p>
+    <!--  <button  id='ctr' class="ctr">on</button> -->
+<!--  <div class="dropdown">
+  <button class="dropbtn"></button>
+  <div class="dropdown-content">
+    <a href="i.html">parallel</a>
+    <a href="Question2_1_circle.html"></a>
+    <a href="Question2_1_ellipse.html">orthographic</a>
+      <a href="Question2_1_rectangle.html">isometric</a>
+    <a href="Question2_1_polygon.html">Question2_1_polygon</a>
+    <a href="Question2_1_polyline.html">Question2_1_polyline</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Perspective</button>
+  <div class="dropdown-content">
+    <a href="Question2_2.html">1 point</a>
+    <a href="Question2_2_eg_circle.html">2 point</a>
+    <a href="Question2_2_eg_ellipse.html">3 point</a>
+  </div>
+</div> -->
+<canvas id="canvas" ></canvas>
+<div id="uiContainer">
+  <div id="ui">
+<br>
+<br>
+<br>
+ <div style="font-weight: 800;font-size: 14px; display: inline-block; width: 600px; margin-right:100px;color: red;">Perspective View:<select style="width:72px; height: 30px;font-size: 16px;color:red;"  id='view' onchange="main(this.value)">
+<option value='1' selected   >1 point</option>
+<option value='2'  >2 point</option>
+<option value='3'>3 point</option>
+
+</select>
+</div>
+<br>
+<br>
+<div style="font-weight: 800;font-size: 14px; display: inline-block; width: 600px; margin-right:100px;color: red;">Texture:<select style="width:85px; height: 30px;font-size: 16px;color:red;"  id='tx' onchange="main(this.value)">
+<option value='t1' selected   >House1</option>
+<option value='t2'  >House2</option>
+
+
+</select>
+</div>
+<br>
+<br>
+<div style="font-weight: 800;font-size: 14px; display: inline-block; width: 600px; margin-right:100px;color: red;">Filter:<select style="width:85px; height: 30px;font-size: 16px;color:red;"  id='ft' onchange="main(this.value)">
+<option value='normal' selected   > normal</option>
+<option value='gaussianBlur'  >gaussianBlur</option>
+<option value='gaussianBlur2'  >gaussianBlur2</option>
+<option value='gaussianBlur3'  >gaussianBlur3</option>
+<option value='unsharpen'  >unsharpen</option>
+<option value='sharpness'  >sharpness</option>
+
+<option value='sharpen'  >sharpen</option>
+<option value='edgeDetect'  >edgeDetect</option>
+<option value='edgeDetect2'  >edgeDetect2</option>
+<option value='edgeDetect3'  >edgeDetect3</option>
+<option value='edgeDetect4'  >edgeDetect4</option>
+<option value='edgeDetect5'  >edgeDetect5</option>
+<option value='edgeDetect6'  >edgeDetect6</option>
+
+
+<option value='sobelHorizontal'  >sobelHorizontal</option>
+<option value='sobelVertical'  >sobelVertical</option>
+<option value='previtHorizontal'  >previtHorizontal</option>
+<option value='previtVertical'  >previtVertical</option>
+
+<option value='boxBlur'  >boxBlur</option>
+<option value='triangleBlur'  >triangleBlur</option>
+<option value='emboss'  >emboss</option>
+
+</select>
+</div>
+
+
+<!-- <div style="font-weight: 800;font-size: 14px; display: inline-block; width: 600px; margin-right:100px;color: red;">Animation:<select style="width:85px; height: 30px;font-size: 16px;color:red;"  id='ani' onchange="main(this.value)">
+<option value='on'   >On</option>
+<option value='off' selected  >Off</option>
+
+
+</select>
+</div> -->
+    <br>
+    <br>
+    <br>
+    <br><br>
+
+
+    <div id="x"></div>
+    <div id="y"></div>
+    <div id="z"></div>
+    <div id="angleX"></div>
+    <div id="angleY"></div>
+    <div id="angleZ"></div>
+    <div id="scaleX"></div>
+    <div id="scaleY"></div>
+    <div id="scaleZ"></div>
+    <div id="shearX"></div>
+    <div id="shearY"></div>
+    <div id="fieldOfView"></div>
+     <div id="cameraAngle"></div>
+     <div id="shininess"></div> 
+     <div id="redlight"></div> 
+     <div id="greenlight"></div> 
+     <div id="bluelight"></div> 
+   <!--    <div id="fRotation"></div> -->
+  </div>
+</div>
+</head>
+<body>
+<!-- vertex shader -->
+<script id="3d-vertex-shader" type="x-shader/x-vertex">
+attribute vec4 a_position;
+
+attribute vec2 a_texcoord;
+varying vec2 v_texcoord;
+
+uniform float u_fudgeFactor;
+attribute vec3 a_normal;
+
+uniform vec3 u_lightWorldPosition;
+uniform vec3 u_viewWorldPosition;
+
+uniform mat4 u_world;
+uniform mat4 u_worldViewProjection;
+uniform mat4 u_worldInverseTranspose;
+
+varying vec3 v_normal;
+
+varying vec3 v_surfaceToLight;
+varying vec3 v_surfaceToView;
+// varying vec3 v_surfaceToLight;
+// varying vec3 v_surfaceToView;
+
+void main() {
+  // Multiply the position by the matrix.
+  gl_Position = u_worldViewProjection * a_position;
+   v_normal = mat3(u_worldInverseTranspose) * a_normal;
+
+  // compute the world position of the surfoace
+  vec3 surfaceWorldPosition = (u_world * a_position).xyz;
+
+  // compute the vector of the surface to the light
+  // and pass it to the fragment shader
+  v_surfaceToLight = u_lightWorldPosition - surfaceWorldPosition;
+
+  // compute the vector of the surface to the view/camera
+  // and pass it to the fragment shader
+  v_surfaceToView = u_viewWorldPosition - surfaceWorldPosition;
+
+    v_texcoord = a_texcoord;
+}
+</script>
+<!-- fragment shader -->
+<script id="3d-fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+// Passed in from the vertex shader.
+varying vec2 v_texcoord;
+varying vec3 v_normal;
+varying vec3 v_surfaceToLight;
+varying vec3 v_surfaceToView;
+
+//uniform vec4 u_color;
+uniform float u_shininess;
+uniform sampler2D u_texture;
+
+uniform vec3 u_lightColor;
+uniform vec3 u_specularColor;
+
+
+uniform sampler2D u_image;
+uniform vec2 u_textureSize;
+uniform float u_kernel[9];
+uniform float u_kernelWeight;
+
+void main() {
+	  // because v_normal is a varying it's interpolated
+  // we it will not be a uint vector. Normalizing it
+  // will make it a unit vector again
+  vec3 normal = normalize(v_normal);
+
+  vec3 surfaceToLightDirection = normalize(v_surfaceToLight);
+  vec3 surfaceToViewDirection = normalize(v_surfaceToView);
+  vec3 halfVector = normalize(surfaceToLightDirection + surfaceToViewDirection);
+
+  float light = dot(normal, surfaceToLightDirection);
+  float specular = 0.0;
+  if (light > 0.0) {
+   specular = pow(dot(normal, halfVector), u_shininess);
+  }
+
+
+
+  vec2 onePixel = vec2(1.0, 1.0) / u_textureSize;
+   vec4 colorSum =
+     texture2D(u_image, v_texcoord + onePixel * vec2(-1, -1)) * u_kernel[0] +
+     texture2D(u_image, v_texcoord + onePixel * vec2( 0, -1)) * u_kernel[1] +
+     texture2D(u_image, v_texcoord + onePixel * vec2( 1, -1)) * u_kernel[2] +
+     texture2D(u_image, v_texcoord + onePixel * vec2(-1,  0)) * u_kernel[3] +
+     texture2D(u_image, v_texcoord + onePixel * vec2( 0,  0)) * u_kernel[4] +
+     texture2D(u_image, v_texcoord + onePixel * vec2( 1,  0)) * u_kernel[5] +
+     texture2D(u_image, v_texcoord + onePixel * vec2(-1,  1)) * u_kernel[6] +
+     texture2D(u_image, v_texcoord + onePixel * vec2( 0,  1)) * u_kernel[7] +
+     texture2D(u_image, v_texcoord + onePixel * vec2( 1,  1)) * u_kernel[8] ;
+ 
+   // 只把rgb值求和除以权重
+   // 将阿尔法值设为 1.0
+   gl_FragColor = vec4((colorSum / u_kernelWeight).rgb, 1.0).bgra;
+
+
+
+
+//gl_FragColor =  texture2D(u_texture, v_texcoord).bgra;
+  // Lets multiply just the color portion (not the alpha)
+  // by the light
+ gl_FragColor.rgb *= light * u_lightColor;
+
+  // // Just add in the specular
+   gl_FragColor.rgb += specular * u_specularColor;
+
+}
+
+</script>
+ <link rel="stylesheet" href="./css/e.css">
+<script src="https://webglfundamentals.org/webgl/resources/webgl-utils.js"></script>
+<script src="https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js"></script>
+<script src="https://webglfundamentals.org/webgl/resources/webgl-lessons-helper.js"></script>
+<script type="text/javascript" src="./js/perspective.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+body
+{
+    background-color:#d0e4fe;
+}
+
+canvas{
+
+    background-color: #ffffff;
+    display:block;
+}
+p{
+    display:block;
+    width:700px;
+
+
+}
+button{
+
+    width: 80px;
+
+    height: 30px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    padding-left: 12px;
+
+    border-radius: 5px;
+
+    background: -ms-linear-gradient(top, #66B5E6, #2e88c0);
+
+
+}
+p button {
+
+    width: 80px;
+
+    height: 30px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    padding-left: 12px;
+
+    border-radius: 5px;
+
+    background: -ms-linear-gradient(top, #66B5E6, #2e88c0);
+
+
+
+}

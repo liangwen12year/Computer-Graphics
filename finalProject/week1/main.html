@@ -1,0 +1,303 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Project-Week1</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+    <style>
+.containerclearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+    }
+* html .containerclearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .containerclearfix { zoom: 1; } /* IE7 */
+* { box-sizing: border-box }
+</style>
+</head>
+<body>
+    
+<script>
+
+function functrans(value) {
+document.getElementById("transtxt").value=value;
+var x = value;
+var y="translate("+x+"px,0px)";
+var view=document.getElementById("view").value;
+//console.log(view);
+document.getElementById(view).style.transform = y;
+
+}
+
+function funcscale(value) {
+document.getElementById("scaletxt").value=value;
+//document.getElementById("scale").value=value;
+var x = value;
+var y="scale("+x+","+x+")";
+var view=document.getElementById("view").value;
+//console.log(view);
+document.getElementById(view).style.transform = y;
+}
+
+function funcrot(value) {
+document.getElementById("rottxt").value=value;
+var i=value+" deg";
+//document.getElementById("rot").value=i;
+var x = value;
+var y="rotate("+x+"deg)";
+var view=document.getElementById("view").value;
+//console.log(view);
+document.getElementById(view).style.transform = y;
+}
+
+function funcshear(value) {
+document.getElementById("skewtxt").value=value;
+var i=value+" deg";
+//document.getElementById("skew").value=i;
+var x = value;
+var y="skewX("+x+"deg)";
+var view=document.getElementById("view").value;
+//console.log(view);
+document.getElementById(view).style.transform = y;
+}
+//translate: <input id="translate" value='1' name="ratio" style="margin-left:24px; ">
+
+
+
+</script>   
+
+
+<div id="maindiv" class="containerclearfix">
+<div id="divfront" style="float:left;width:50%;border: 1px solid;height: 650px; "> 
+<div id="divfrontsvg" style="overflow:hidden"> 
+
+    <svg 
+            id="front"
+            height="650"
+            width="673"
+
+          
+        >
+            <rect 
+                ry="0"
+                y="250"
+                x="300.0"
+                height="250"
+                width="300"
+                id="rect3336"
+                style="fill:#999999;fill-opacity:1"/>
+
+            <path
+
+                d="M 280,250 L450,150 L620,250 Z"
+                id="path1"
+                style="fill:#767676;fill-opacity:1;stroke:url(#linearGradient6611);stroke-linejoin:miter;stroke-width:1.7;stroke-miterlimit:4.5;stroke-dasharray:none"/>
+            <path
+
+                d="M 520,190 L520,100 L600,100 L600,240 Z"
+                id="path1"
+                style="fill:#000000;fill-opacity:0.65;stroke:url(#linearGradient6611);stroke-linejoin:miter;stroke-width:1.7;stroke-miterlimit:4.5;stroke-dasharray:none"/>
+                    
+            <rect
+                ry="1.198"
+                y="400.0"
+                x="400"
+                height="74.2"
+                width="41.4"
+                id="rect1"
+                style="fill:#6C5D53;fill-opacity:1"/>
+            <rect
+                ry="1.2"
+                y="400"
+                x="450"
+                height="74.23"
+                width="41.37"
+                id="rect2"
+                style="fill:#6C5D53;fill-opacity:1"/>
+            <rect
+                ry="1.11"
+                y="400"
+                x="440"
+                height="73.02"
+                width="8"
+                id="rect3"
+                style="fill:#FFE680;fill-opacity:1"/>
+            <rect
+                ry="20.118"
+                y="300"
+                x="480"
+                height="60.256"
+                width="81.541"
+                id="rect4"
+                style="fill:#0000FF;fill-opacity:1"/>
+
+            <rect
+                ry="20.118"
+                y="300"
+                x="320"
+                height="60.256"
+                width="81.541"
+                id="rect4"
+                style="fill:#0000FF;fill-opacity:1"/>
+
+            
+
+           
+
+        </svg>
+        </div>
+</div>
+
+<div id="divside" style="float:left;width:50%;border: 1px solid;height: 650px">
+<div id="divsidesvg" style="overflow:hidden"> 
+        <svg
+
+            height="650"
+            width="673"
+            id="side"
+        >
+
+            <rect
+
+                x=350
+                y=250
+                height="250"
+                width="250"
+                id="rect4"
+                style="fill:#999999;fill-opacity:0.9"/>
+            <rect
+                
+                x=500
+                y=100
+                height="70"
+                width="80"
+                id="rect4"
+                style="fill:#000000;fill-opacity:0.65"/>
+
+            <rect
+
+               x=300
+                y=170
+                height="80"
+                width="350"
+                id="rect4"
+                style="fill:#0767676;fill-opacity:0.5"/>
+
+            <rect
+                ry="20.118"
+                x=370
+                y=280
+                height="60.256"
+                width="81.541"
+                id="rect4"
+                style="fill:#0000FF;fill-opacity:1"/>
+
+              <rect
+                ry="20.118"
+                x=480
+                y=280
+                height="60.256"
+                width="81.541"
+                id="rect4"
+                style="fill:#0000FF;fill-opacity:1"/>
+
+     
+    </svg>
+</div>
+</div>
+
+<div id="divtop" style="float:left;width:50%;border: 1px solid;height:650px;">
+<div id="divtopsvg" style="overflow:hidden">
+  
+        <svg
+            height="650"
+            width="673"
+            id="top"
+            >
+
+            <rect
+                
+                x=300
+                y=250
+                height="200"
+                width="300"
+                id="rect4"
+                style="fill:#767676;fill-opacity:1"/>
+            <rect
+                ry="1.11"
+               x=470
+                y=250
+                height="200"
+                width="8"
+                id="rect3"
+                style="fill:#FFE680;fill-opacity:1"/>
+
+              <rect
+                ry="20.118"
+                x=490
+                y=300
+                height="70"
+                width="70"
+                id="rect4"
+                style="fill:#000000;fill-opacity:0.5"/>
+
+             
+        </svg>
+</div>
+</div>
+
+
+<div id="control" style="float:left;width:50%;border: 1px solid;height:650px; ">
+    <div id="ct" style="overflow:hidden"> 
+ 
+ <br>
+ <h3 style="margin-left:200px;">Wen Liang(Wen_Liang@student.uml.edu)   Project_Week1</h3>
+
+
+ <br>
+  
+<span style="margin-left: 50px;  font-weight: 900">
+     View:<select id='view' style="width:80px; margin-left: 20px;height:30px;font-weight: 900">
+<option value='front' selected>front</option>
+<option value='side'>side</option>
+<option value='top'>top</option>
+
+</select>
+</span> 
+
+<!-- <button id="reset" >reset</button> -->
+<div id="divsidetrans" style="padding-left: 30px; padding-bottom: 30px"> 
+<h3 style="color:red;"> Transformations on different view</h3>
+<text >Translate : <input type="range" id="trans" min="0" max="360"value="0" onchange="functrans(this.value)"></text>
+<text style="margin-left: 100px">Value : <input id="transtxt" type="text" name="fname" value="0"></text><br><br>
+<text >Rotate : <input type="range" id="trans"  min="0" max="360"value="0" onchange="funcrot(this.value)"></text>
+<text style="margin-left: 130px">Value : <input id="rottxt" type="text" name="fname" value="0 deg"></text><br><br>
+<text>Scale : <input type="range" id="rrans"  min="1" max="2" step='0.05' value="1" onchange="funcscale(this.value)"></text>
+<text style="margin-left: 145px">Value : <input id="scaletxt" type="text" name="fname" value="1"></text><br><br>
+<text >Shear : <input type="range" id="trans"  min="0" max="360"value="0" onchange="funcshear(this.value)"></text>
+<text style="margin-left: 140px">Value : <input id="skewtxt" type="text" name="fname" value="0 deg"></text><br>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
